@@ -7,6 +7,7 @@ import { generateClient } from 'aws-amplify/data';
 const client = generateClient<Schema>();
 
 function App() {
+    const { user, signOut } = useAuthenticator();
 
   const { signOut } = useAuthenticator();
 
@@ -14,8 +15,8 @@ function App() {
 
   return (
     <main>
+       <h1>{user?.signInDetails?.loginId}'s todos</h1>
       {/* ... */}
-
       <button onClick={signOut}>Sign out</button>
     </main>
   );
