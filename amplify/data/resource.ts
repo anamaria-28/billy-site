@@ -1,26 +1,20 @@
-import { type ClientSchema, a, defineData } from "@aws-amplify/backend";
-import { postConfirmation } from "../auth/post-confirmation/resource";
+import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
 
-const schema = a
-  .schema({
-    UserProfile: a
-      .model({
-        email: a.string(),
-        profileOwner: a.string(),
-      })
-      .authorization((allow) => [
-        allow.ownerDefinedIn("profileOwner"),
-      ]),
-  })
-  .authorization((allow) => [allow.resource(postConfirmation)]);
+const schema = a.schema({
+  Todo: a.model({
+    content: a.string(),
+
+  }).authorization(allow => [allow.owner()]),
+});
+
 export type Schema = ClientSchema<typeof schema>;
 
 export const data = defineData({
   schema,
   authorizationModes: {
-    defaultAuthorizationMode: "apiKey",
-    apiKeyAuthorizationMode: {
-      expiresInDays: 30,
-    },
+    // This tells the data client in your app (generateClient())
+    // to sign API requests with the user authentication token.
+
+    defaultAuthorizationMode: 'userPool',
   },
 });
