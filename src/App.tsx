@@ -1,5 +1,5 @@
 import type { Schema } from '../amplify/data/resource';
-import { postConfirmation } from "../auth/post-confirmation/resource";
+import { postConfirmation } from "../auth/post-confirmation/handler";
 
 import { useAuthenticator } from '@aws-amplify/ui-react';
 import { useEffect, useState } from 'react';
