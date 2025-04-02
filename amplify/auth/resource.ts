@@ -1,4 +1,5 @@
 import { defineAuth } from '@aws-amplify/backend';
+import { postConfirmation } from './postConfirmation';
 
 export const auth = defineAuth({
   loginWith: {
