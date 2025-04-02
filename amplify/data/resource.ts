@@ -1,5 +1,5 @@
 import { type ClientSchema, a, defineData } from '@aws-amplify/backend';
-import { postConfirmation } from "../auth/post-confirmation/resource";
+import { postConfirmation } from "../auth/post-confirmation/handler";
 
 const schema = a.schema({
   Todo: a.model({
